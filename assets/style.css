@@ -1,0 +1,96 @@
+/* João Lazaro: site styles. Palette: black, dark grey, white (Style Guide). */
+@font-face { font-family: "Inter"; src: url("fonts/inter-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Inter"; src: url("fonts/inter-latin-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: "Inter"; src: url("fonts/inter-latin-600-normal.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "Inter"; src: url("fonts/inter-latin-700-normal.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
+
+:root {
+  --black: #000;
+  --grey: #333;
+  --grey-2: #767676;   /* secondary text; passes contrast on white */
+  --rule: #ddd;
+  --white: #fff;
+  --rail: 240px;
+  --gutter: 32px;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--white);
+  color: var(--black);
+  font-family: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+}
+a { color: inherit; text-decoration: none; }
+a:hover, a:focus-visible { text-decoration: underline; text-underline-offset: 3px; }
+a:focus-visible { outline: 2px solid var(--black); outline-offset: 2px; }
+
+/* Left rail */
+.rail {
+  position: fixed; top: 0; left: 0; bottom: 0;
+  width: var(--rail);
+  padding: var(--gutter) 24px var(--gutter) var(--gutter);
+  overflow-y: auto;
+  background: var(--white);
+}
+.brand { display: block; margin-bottom: 28px; }
+.brand img { display: block; width: 48px; height: auto; margin-bottom: 10px; }
+.brand span { font-weight: 700; font-size: 15px; letter-spacing: 0.02em; }
+.menu summary { display: none; }
+.rail ul { list-style: none; margin: 0 0 24px; padding: 0; }
+.rail li { font-size: 13px; line-height: 1.7; }
+.nav li a[aria-current], .work li a[aria-current] { color: var(--grey-2); }
+.label { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey-2); margin: 0 0 6px; }
+.work li { font-size: 12px; font-weight: 600; letter-spacing: 0.02em; }
+.links li { font-size: 12px; color: var(--grey); }
+
+/* Content column */
+main {
+  margin-left: var(--rail);
+  padding: var(--gutter) var(--gutter) 64px;
+  max-width: calc(var(--rail) + 760px);
+}
+h1 { font-size: 32px; line-height: 1.15; font-weight: 700; margin: 0 0 28px; letter-spacing: -0.01em; }
+h1.lede { font-size: 28px; font-weight: 600; max-width: 28ch; margin-bottom: 40px; }
+h2 { font-size: 20px; font-weight: 700; margin: 44px 0 14px; }
+h3 { font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; margin: 32px 0 12px; }
+p { margin: 0 0 14px; max-width: 68ch; }
+ul { max-width: 68ch; }
+hr { border: 0; border-top: 1px solid var(--rule); margin: 40px 0; }
+.more { color: var(--grey-2); white-space: nowrap; }
+.soon { color: var(--grey-2); }
+
+/* Placeholders for media not yet supplied */
+.ph {
+  margin: 24px 0 32px; max-width: 760px; aspect-ratio: 16 / 9;
+  background: #f2f2f2; display: flex; align-items: flex-end;
+}
+.ph span { font-size: 12px; color: var(--grey-2); padding: 10px 12px; }
+
+/* Home grid */
+.grid { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 20px; max-width: 900px; }
+.grid a { display: block; }
+.grid .thumb { display: block; aspect-ratio: 4 / 3; background: #f2f2f2; margin-bottom: 8px; }
+.grid .cap { font-size: 12px; font-weight: 600; letter-spacing: 0.02em; }
+
+footer { margin-top: 80px; padding-top: 16px; border-top: 1px solid var(--rule); font-size: 12px; color: var(--grey-2); }
+footer p { margin: 0 0 4px; }
+
+/* Phones and small tablets: rail becomes a top bar with a Menu toggle */
+@media (max-width: 799px) {
+  :root { --gutter: 16px; }
+  .rail { position: relative; width: auto; padding: 16px; border-bottom: 1px solid var(--rule); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; }
+  .brand { display: flex; align-items: center; gap: 10px; margin: 0; }
+  .brand img { width: 32px; margin: 0; }
+  .menu { width: 100%; }
+  .menu summary { display: block; position: absolute; top: 20px; right: 16px; font-size: 13px; cursor: pointer; list-style: none; }
+  .menu summary::-webkit-details-marker { display: none; }
+  .menu[open] { padding-top: 16px; }
+  main { margin-left: 0; padding: 24px 16px 48px; }
+  h1 { font-size: 26px; }
+  h1.lede { font-size: 22px; }
+  .grid { grid-template-columns: 1fr; }
+}
