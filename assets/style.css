@@ -70,6 +70,11 @@ hr { border: 0; border-top: 1px solid var(--rule); margin: 40px 0; }
 }
 .ph span { font-size: 12px; color: var(--grey-2); padding: 10px 12px; }
 
+/* Embedded video (YouTube, privacy-enhanced mode) */
+.video { margin: 24px 0 32px; max-width: 760px; }
+.video iframe { display: block; width: 100%; aspect-ratio: 16 / 9; border: 0; background: #000; }
+.video figcaption { font-size: 12px; color: var(--grey-2); margin-top: 8px; }
+
 /* Home grid */
 .grid { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 20px; max-width: 900px; }
 .grid a { display: block; }
