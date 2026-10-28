@@ -56,7 +56,7 @@ main {
 h1 { font-size: 32px; line-height: 1.15; font-weight: 700; margin: 0 0 28px; letter-spacing: -0.01em; }
 h1.lede { font-size: 28px; font-weight: 600; max-width: 28ch; margin-bottom: 40px; }
 h2 { font-size: 20px; font-weight: 700; margin: 44px 0 14px; }
-h3 { font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; margin: 32px 0 12px; }
+h3 { font-size: 16px; font-weight: 700; margin: 32px 0 12px; }
 p { margin: 0 0 14px; max-width: 68ch; }
 ul { max-width: 68ch; }
 hr { border: 0; border-top: 1px solid var(--rule); margin: 40px 0; }
@@ -99,3 +99,24 @@ footer p { margin: 0 0 4px; }
   h1.lede { font-size: 22px; }
   .grid { grid-template-columns: 1fr; }
 }
+
+/* Links in the content column: always underlined (WCAG 1.4.1), arrow for other websites */
+main a {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--grey-2);
+  text-underline-offset: 3px;
+}
+main a:hover, main a:focus-visible {
+  text-decoration-color: var(--black);
+  text-decoration-thickness: 2px;
+}
+main a[href^="http"]::after {
+  content: "\2197";
+  font-size: 0.8em;
+  margin-left: 0.15em;
+  text-decoration: none;
+  display: inline-block;
+}
+main a.more, main .grid a, main footer a { text-decoration: none; }
+main a.more:hover, main footer a:hover { text-decoration: underline; }
