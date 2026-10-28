@@ -120,3 +120,6 @@ main a[href^="http"]::after {
 }
 main a.more, main .grid a, main footer a { text-decoration: none; }
 main a.more:hover, main footer a:hover { text-decoration: underline; }
+
+/* Now page film list: no ↗ on each Letterboxd entry, to keep the list quiet */
+main li a[href*="letterboxd.com/joaorlazaro/film/"]::after { content: none; }
